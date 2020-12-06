@@ -27,7 +27,7 @@ const info = {
 			process.env.XDG_SESSION_DESKTOP ||
 			process.env.XDG_CURRENT_DESKTOP ||
 			process.env.GDMSESSION ||
-			process.env.ORIGINAL_XDG_CURRENT_DESKTOP) ??
+			process.env.ORIGINAL_XDG_CURRENT_DESKTOP) ||
 		'null',
 	host: hostname(),
 	ram: `${(((totalmem() - freemem()) / totalmem()) * 100).toFixed(2)}% / 100%`,
@@ -41,7 +41,7 @@ const info = {
 
 console.log(
 	`${colour.bold}
-       ${colour.white}_..oo8${colour.black}"""Y8b.._		
+       ${colour.white}_..oo8${colour.black}"""Y8b.._
      ${colour.white}.88888888o.${colour.black}    "Yb.
    ${colour.white}.d888P""Y8888b${colour.black}      "b
    ${colour.white}o88888    88888)${colour.black}       "b	${colour.brightMagenta}${info.user}${colour.white}	:: ${colour.brightMagenta}${info.host}
