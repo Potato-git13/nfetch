@@ -2,7 +2,7 @@
 
 nfetch is a very simple system info tool written in node.js, it has zero dependencies and is very lightweight.
 
-![screenshot](./github/images/ss.png 'screenshot')
+![screenshot](.github/images/ss.png)
 
 # you can install it very easily;
 
