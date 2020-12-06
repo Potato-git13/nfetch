@@ -35,7 +35,7 @@ const info = {
 	// ! Shitty regex, probably most impractical way to get distro  name too
 	distro: readFileSync('/etc/os-release')
 		.toString('ascii')
-		.match(/(?<=PRETTY_NAME=")(.*)(?=")/)[0]
+		.match(/PRETTY_NAME="([^"]+?)"/)[1]
 		.toLowerCase(),
 	uptime: `${tempUptime.hours ? `${tempUptime.hours}h, ${tempUptime.minutes}m` : `${tempUptime.minutes}m`}`,
 };
