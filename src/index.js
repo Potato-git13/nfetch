@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { freemem, hostname, userInfo, uptime } = require('os');
+const { hostname, userInfo, uptime, freemem, totalmem } = require('os');
 const { readFileSync } = require('fs');
 
 const colour = {
@@ -30,8 +30,7 @@ const info = {
 			process.env.ORIGINAL_XDG_CURRENT_DESKTOP) ??
 		'null',
 	host: hostname(),
-	freemem: `${Math.floor(freemem() / 1024 / 1024).toString()}mb`,
-
+	ram: `${(((totalmem() - freemem()) / totalmem()) * 100).toFixed(2)}% / 100%`,
 	// ! Shitty regex, probably most impractical way to get distro  name too
 	distro: readFileSync('/etc/os-release')
 		.toString('ascii')
@@ -50,7 +49,7 @@ console.log(
  ${colour.white}88888888888888"${colour.black}           8	${colour.green}uptime 	${colour.white}::${colour.green} ${info.uptime}
 ${colour.white}(88DWB8888888P${colour.black}             8)	${colour.brightRed}wm 	${colour.white}::${colour.brightRed} ${info.wm}
  ${colour.white}8888888888P${colour.black}               8	${colour.brightYellow}shell	${colour.white}::${colour.brightYellow} ${info.shell}
- ${colour.white}Y88888888P${colour.black}     ${colour.white}ee${colour.black}        .P	${colour.brightCyan}freemem ${colour.white}::${colour.brightCyan} ${info.freemem}
+ ${colour.white}Y88888888P${colour.black}     ${colour.white}ee${colour.black}        .P	${colour.brightCyan}ram ${colour.white}	::${colour.brightCyan} ${info.ram}
   ${colour.white}Y888888(${colour.black}     ${colour.white}8888${colour.black}      oP
    ${colour.white}"Y88888b${colour.black}     ${colour.white}""${colour.black}     oP"
      ${colour.white}"Y8888o._${colour.black}    _.oP"
